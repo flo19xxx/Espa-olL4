@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>AeroEspañol L4 – Funkspanisch für Piloten</title>
+<style>
+:root{
+  --bg:#07111f;--panel:#0e1b2d;--panel2:#13243a;--line:#203754;
+  --text:#eef5ff;--muted:#91a7c2;--accent:#5cbcff;--accent2:#6ee7b7;
+  --danger:#ff6b6b;--warn:#ffd166;--shadow:0 18px 50px rgba(0,0,0,.28)
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at top,#102746 0,#07111f 42%,#050b14 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.app{max-width:1080px;margin:auto;padding:22px 16px 50px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:20px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(145deg,#5cbcff,#4d6dff);display:grid;place-items:center;font-size:23px;box-shadow:var(--shadow)}
+h1{font-size:20px;margin:0}.sub{color:var(--muted);font-size:13px;margin-top:3px}
+.pill{border:1px solid var(--line);background:#0d1a2b;color:#b9cae1;border-radius:999px;padding:8px 12px;font-size:12px}
+.hero{padding:26px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,rgba(18,38,64,.96),rgba(9,22,38,.96));box-shadow:var(--shadow);margin-bottom:18px}
+.hero h2{font-size:29px;margin:0 0 9px}.hero p{margin:0;color:#aabbd0;line-height:1.55;max-width:760px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{border:1px solid var(--line);background:linear-gradient(150deg,#102138,#0b1727);border-radius:20px;padding:18px;min-height:172px;transition:.18s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-2px);border-color:#3a628d}
+.icon{font-size:26px}.card h3{margin:12px 0 6px}.card p{color:var(--muted);font-size:14px;line-height:1.45;margin:0 0 14px;flex:1}
+.primary,.secondary,.danger,.ghost{border:0;border-radius:12px;padding:11px 14px;font-weight:700}
+.primary{background:linear-gradient(135deg,#5cbcff,#6574ff);color:white}.secondary{background:#16304d;color:#dbeaff;border:1px solid #294b70}
+.danger{background:#4a2028;color:#ffd8db;border:1px solid #74323b}.ghost{background:transparent;color:#a9c2df;border:1px solid var(--line)}
+.view{display:none}.view.active{display:block}
+.back{margin-bottom:14px}
+.panel{border:1px solid var(--line);background:rgba(13,28,47,.93);border-radius:22px;padding:20px;box-shadow:var(--shadow)}
+.panel h2{margin-top:0}.muted{color:var(--muted)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:0 0 auto}
+.mode-tabs{display:flex;gap:8px;margin:12px 0 18px;flex-wrap:wrap}.mode-tabs button.active{outline:2px solid #5cbcff}
+.challenge{padding:25px;border:1px solid #284766;border-radius:18px;background:#0a1728;text-align:center;margin-top:14px}
+.big-number{font-size:58px;font-weight:800;letter-spacing:1px;margin:20px 0}
+input[type=text],input[type=number],textarea{width:100%;background:#071321;color:white;border:1px solid #29425e;border-radius:12px;padding:13px;outline:none}
+textarea{min-height:130px;resize:vertical}
+input:focus,textarea:focus{border-color:#5cbcff;box-shadow:0 0 0 3px rgba(92,188,255,.12)}
+.feedback{min-height:30px;font-weight:700;margin-top:12px}.ok{color:var(--accent2)}.bad{color:#ff9292}
+.statline{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.stat{background:#0b1a2c;border:1px solid var(--line);border-radius:14px;padding:12px}.stat b{display:block;font-size:21px}.stat span{color:var(--muted);font-size:12px}
+.placeholder{border:1px dashed #38536f;border-radius:16px;padding:22px;color:#9fb5cf;background:rgba(5,14,25,.38);margin-top:12px}
+.audio-btn{font-size:18px}
+.linklist a{display:block;color:#a9dcff;text-decoration:none;padding:13px;border:1px solid var(--line);border-radius:12px;margin:9px 0;background:#0a1728}
+.small{font-size:12px;color:#7f97b3}
+footer{text-align:center;color:#667f9c;font-size:12px;margin-top:22px}
+@media(max-width:820px){.grid{grid-template-columns:repeat(2,1fr)}.hero h2{font-size:24px}}
+@media(max-width:560px){.app{padding:14px 12px 35px}.grid{grid-template-columns:1fr}.hero{padding:20px}.card{min-height:150px}.big-number{font-size:48px}.pill{display:none}.statline{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="brand"><div class="logo">✈</div><div><h1>AeroEspañol L4</h1><div class="sub">Funkspanisch · Pilot Proficiency Training</div></div></div>
+    <div class="pill">Nivel 4 · Entrenamiento</div>
+  </div>
+
+  <main id="home" class="view active">
+    <section class="hero">
+      <h2>Entrena para comunicar, no para memorizar.</h2>
+      <p>Hörverständnis, Funkphrasen, Bildbeschreibung, Interview, Fachvokabular und Zahlen – als kompaktes Training für Piloten auf Spanisch.</p>
+    </section>
+    <section class="grid">
+      <div class="card"><div class="icon">🎧</div><h3>Colaciones</h3><p>Funkanweisungen anhören, verstehen und die gehörte Information schriftlich wiedergeben.</p><button class="primary" onclick="show('colaciones')">Training öffnen</button></div>
+      <div class="card"><div class="icon">📷</div><h3>Fotos</h3><p>Normale und außergewöhnliche Situationen auf Spanisch strukturiert beschreiben.</p><button class="primary" onclick="show('fotos')">Training öffnen</button></div>
+      <div class="card"><div class="icon">🎙️</div><h3>Interview</h3><p>Typische persönliche und flugbetriebliche Fragen hören und spontan beantworten.</p><button class="primary" onclick="show('interview')">Training öffnen</button></div>
+      <div class="card"><div class="icon">🧠</div><h3>Vokabeltrainer</h3><p>Fachspezifische Wörter gleichzeitig lesen und hören. Dokumentbasierter Inhalt folgt.</p><button class="primary" onclick="show('vocab')">Training öffnen</button></div>
+      <div class="card"><div class="icon">🔗</div><h3>Links</h3><p>Prüfungsrelevante Quellen, Lernmaterial und nützliche externe Ressourcen sammeln.</p><button class="primary" onclick="show('links')">Links öffnen</button></div>
+      <div class="card"><div class="icon">🔢</div><h3>Zahlen</h3><p>Zahlen von 0–1000 per Audio erkennen oder eine geschriebene Zahl auf Spanisch eingeben.</p><button class="primary" onclick="show('zahlen');newNumber()">Training starten</button></div>
+    </section>
+  </main>
+
+  <section id="colaciones" class="view">
+    <button class="ghost back" onclick="show('home')">← Hauptmenü</button>
+    <div class="panel"><h2>🎧 Colaciones</h2><p class="muted">Hier kommen deine echten Funk-Audiodateien hinein. Für realistischeres Training ist beim Beispiel bereits eine simulierte Funkverzerrung mit Rauschen und Funk-Charakter eingebaut.</p>
+      <div class="placeholder"><b>Beispiel-Aufgabe</b><br><br>
+      <div class="row" style="margin-bottom:10px">
+        <button class="primary audio-btn" onclick="playColacionSample(true)">▶ Mit Funkverzerrung abspielen</button>
+        <button class="secondary audio-btn" onclick="playColacionSample(false)">▶ Normal abspielen</button>
+      </div>
+      <div class="small" style="margin-bottom:10px">Die Funkversion simuliert Cockpit-/ATC-Charakter mit Bandbegrenzung, Rauschen und kleinen Squelch-Effekten.</div>
+      <div id="colacionStatus" class="small" style="min-height:18px;margin-bottom:10px"></div>
+      <textarea placeholder="Schreibe hier, was du verstanden hast / deine Übersetzung ..."></textarea>
+      <div class="row" style="margin-top:10px"><button class="primary">Antwort prüfen</button><button class="ghost">Lösung anzeigen</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fotos" class="view">
+    <button class="ghost back" onclick="show('home')">← Hauptmenü</button>
+    <div class="panel"><h2>📷 Fotos</h2><p class="muted">Später können hier normale Flugsituationen und Emergencies mit deinen eigenen Bildern hinterlegt werden.</p>
+      <div class="placeholder" style="text-align:center"><div style="font-size:60px">🚁</div><b>Foto-Platzhalter</b><p>Beschreibe auf Spanisch: Was siehst du? Was ist passiert? Welche Gefahr besteht? Was würdest du tun?</p><textarea placeholder="Describe la situación en español..."></textarea></div>
+    </div>
+  </section>
+
+  <section id="interview" class="view">
+    <button class="ghost back" onclick="show('home')">← Hauptmenü</button>
+    <div class="panel"><h2>🎙️ Interview</h2><p class="muted">Frage anhören, spontan antworten und bei Bedarf den geschriebenen Text einblenden.</p>
+      <div class="challenge">
+        <button class="primary audio-btn" onclick="playInterview()">▶ Frage anhören</button>
+        <button class="secondary" onclick="toggleTranscript()">Text anzeigen</button>
+        <p id="transcript" style="display:none;font-size:20px;margin-top:20px"></p>
+        <textarea placeholder="Optional: Stichwörter oder deine schriftliche Antwort ..."></textarea>
+        <div class="row" style="justify-content:center;margin-top:10px"><button class="secondary" onclick="nextInterview()">Nächste Frage</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vocab" class="view">
+    <button class="ghost back" onclick="show('home')">← Hauptmenü</button>
+    <div class="panel"><h2>🧠 Vokabeltrainer</h2><p class="muted">Für dieses Modul können wir deine spezifischen Unterlagen später direkt in Lektionen umwandeln.</p>
+      <div class="challenge">
+        <div class="small">BEISPIEL</div><div style="font-size:34px;font-weight:800;margin:10px">aproximación frustrada</div><div class="muted">Fehlanflug / Go-around</div>
+        <div class="row" style="justify-content:center;margin-top:18px"><button class="primary" onclick="speak('aproximación frustrada')">🔊 Anhören</button><button class="secondary">Gewusst</button><button class="danger">Wiederholen</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="links" class="view">
+    <button class="ghost back" onclick="show('home')">← Hauptmenü</button>
+    <div class="panel"><h2>🔗 Links</h2><p class="muted">Diese Liste können wir mit deinen gewünschten Quellen füllen.</p>
+      <div class="linklist">
+        <a href="#" onclick="return false">+ Prüfungsinformationen hinzufügen</a>
+        <a href="#" onclick="return false">+ Funk-/Aviation-Quelle hinzufügen</a>
+        <a href="#" onclick="return false">+ Persönliches Lernmaterial hinzufügen</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="zahlen" class="view">
+    <button class="ghost back" onclick="show('home')">← Hauptmenü</button>
+    <div class="panel">
+      <h2>🔢 Zahlentrainer 0–1000</h2>
+      <div class="mode-tabs">
+        <button id="tabListen" class="secondary active" onclick="setNumberMode('listen')">🎧 Hören → Ziffer eingeben</button>
+        <button id="tabWrite" class="secondary" onclick="setNumberMode('write')">👁 Zahl sehen → Spanisch schreiben</button>
+      </div>
+      <div class="challenge">
+        <div id="listenBlock">
+          <div class="row" style="justify-content:center">
+            <button class="primary audio-btn" onclick="speakCurrentNumber(true)">📻 Zahl mit Funkverzerrung</button>
+            <button class="secondary audio-btn" onclick="speakCurrentNumber(false)">🔊 Zahl normal anhören</button>
+          </div>
+          <div class="small" style="margin-top:8px">Beide Varianten können beliebig oft wiederholt werden</div>
+          <div id="ttsStatus" class="small" style="margin-top:6px;min-height:18px"></div>
+        </div>
+        <div id="writeBlock" style="display:none"><div id="shownNumber" class="big-number">347</div></div>
+        <div style="max-width:560px;margin:22px auto 0"><input id="numberAnswer" type="text" autocomplete="off" placeholder="Antwort eingeben ..." onkeydown="if(event.key==='Enter')checkNumber()"></div>
+        <div class="row" style="justify-content:center;margin-top:12px"><button class="primary" onclick="checkNumber()">Prüfen</button><button class="secondary" onclick="newNumber()">Neue Zahl</button><button class="ghost" onclick="revealNumber()">Lösung</button></div>
+        <div id="numFeedback" class="feedback"></div>
+      </div>
+      <div class="statline"><div class="stat"><b id="correctStat">0</b><span>Richtig</span></div><div class="stat"><b id="wrongStat">0</b><span>Falsch</span></div><div class="stat"><b id="rateStat">–</b><span>Trefferquote</span></div></div>
+      <p class="small">Die Audioausgabe nutzt die spanische Sprachausgabe des Browsers/Geräts. Dadurch funktioniert der Trainer ohne separate Audiodatei.</p>
+    </div>
+  </section>
+
+  <footer>Trainingshilfe · ersetzt keine behördliche Sprachprüfung oder offizielle Betriebsunterlagen</footer>
+</div>
+
+<script>
+let currentNumber=0, numberMode='listen', correct=0, wrong=0, interviewIndex=0;
+const interviewQuestions=[
+ "Háblame de tu experiencia como piloto.",
+ "¿Qué tipo de helicóptero vuelas actualmente?",
+ "Describe un día normal de trabajo.",
+ "¿Qué harías si las condiciones meteorológicas empeoran durante el vuelo?",
+ "Cuéntame una situación difícil que hayas vivido durante una operación aérea.",
+ "¿Por qué es importante una comunicación clara entre el piloto y el control aéreo?"
+];
+
+function show(id){
+ document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+let cachedVoices=[];
+let radioNoise={ctx:null, source:null, gain:null};
+function loadVoices(){
+ if(!('speechSynthesis' in window)) return [];
+ cachedVoices=window.speechSynthesis.getVoices() || [];
+ return cachedVoices;
+}
+function ensureRadioContext(){
+ const AudioCtx=window.AudioContext || window.webkitAudioContext;
+ if(!AudioCtx) return null;
+ if(!radioNoise.ctx) radioNoise.ctx=new AudioCtx();
+ if(radioNoise.ctx.state==='suspended') radioNoise.ctx.resume();
+ return radioNoise.ctx;
+}
+function startRadioNoise(){
+ const ctx=ensureRadioContext();
+ if(!ctx) return;
+ stopRadioNoise();
+ const buffer=ctx.createBuffer(1, ctx.sampleRate*2, ctx.sampleRate);
+ const data=buffer.getChannelData(0);
+ for(let i=0;i<data.length;i++) data[i]=(Math.random()*2-1)*(0.65+Math.random()*0.35);
+ const source=ctx.createBufferSource();
+ source.buffer=buffer; source.loop=true;
+ const hp=ctx.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=700;
+ const lp=ctx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=2600;
+ const gain=ctx.createGain(); gain.gain.value=0.0001;
+ source.connect(hp); hp.connect(lp); lp.connect(gain); gain.connect(ctx.destination);
+ source.start();
+ const now=ctx.currentTime;
+ gain.gain.cancelScheduledValues(now);
+ gain.gain.setValueAtTime(0.0001, now);
+ gain.gain.linearRampToValueAtTime(0.028, now+0.05);
+ const tick=()=>{
+   if(!radioNoise.gain || !radioNoise.ctx) return;
+   const base=0.013+Math.random()*0.013;
+   const t=radioNoise.ctx.currentTime;
+   radioNoise.gain.gain.cancelScheduledValues(t);
+   radioNoise.gain.gain.setValueAtTime(radioNoise.gain.gain.value || base, t);
+   radioNoise.gain.gain.linearRampToValueAtTime(base, t+0.06);
+   if(Math.random()<0.18) radioNoise.gain.gain.linearRampToValueAtTime(0.045, t+0.02);
+ };
+ const interval=setInterval(tick, 110);
+ radioNoise={ctx, source, gain, interval};
+}
+function stopRadioNoise(){
+ if(radioNoise.interval) clearInterval(radioNoise.interval);
+ if(radioNoise.gain && radioNoise.ctx){
+   const t=radioNoise.ctx.currentTime;
+   try{
+     radioNoise.gain.gain.cancelScheduledValues(t);
+     radioNoise.gain.gain.setValueAtTime(radioNoise.gain.gain.value || 0.01, t);
+     radioNoise.gain.gain.linearRampToValueAtTime(0.0001, t+0.18);
+   }catch(e){}
+ }
+ if(radioNoise.source){
+   const source=radioNoise.source;
+   setTimeout(()=>{ try{source.stop();source.disconnect();}catch(e){} },220);
+ }
+ radioNoise={ctx:radioNoise.ctx, source:null, gain:null, interval:null};
+}
+function playColacionSample(useRadio=true){
+ speak('Autorizado a aterrizar pista uno tres, viento uno dos cero grados, ocho nudos.',{statusId:'colacionStatus',radio:useRadio});
+}
+function speak(text, options={}){
+ const status=document.getElementById(options.statusId || 'ttsStatus');
+ if(!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance==='undefined'){
+   if(status) status.textContent='Sprachausgabe wird von diesem Browser nicht unterstützt.';
+   alert('Sprachausgabe wird von diesem Browser nicht unterstützt. Bitte Chrome, Edge oder Safari verwenden.');
+   return;
+ }
+ stopRadioNoise();
+ window.speechSynthesis.cancel();
+ const doSpeak=()=>{
+   if(options.radio) startRadioNoise();
+   const u=new SpeechSynthesisUtterance(text);
+   u.lang='es-ES';u.rate=.82;u.pitch=1;u.volume=1;
+   const voices=loadVoices();
+   const es=voices.find(v=>/^es-ES/i.test(v.lang)) || voices.find(v=>/^es/i.test(v.lang));
+   if(es) u.voice=es;
+   u.onstart=()=>{ if(status) status.textContent=options.radio ? '📻 Funk mit Verzerrung läuft …' : '🔊 Audio läuft …'; };
+   u.onend=()=>{ if(status) status.textContent=''; if(options.radio) stopRadioNoise(); };
+   u.onerror=(e)=>{ if(status) status.textContent='Audio konnte nicht abgespielt werden. Tippe erneut auf den Abspiel-Button.'; if(options.radio) stopRadioNoise(); };
+   window.speechSynthesis.speak(u);
+   setTimeout(()=>{
+     if(window.speechSynthesis.paused) window.speechSynthesis.resume();
+   },120);
+ };
+ const voices=loadVoices();
+ if(voices.length===0){
+   setTimeout(doSpeak,250);
+ }else{
+   doSpeak();
+ }
+}
+function numberToSpanish(n){
+ const units=['cero','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve'];
+ const teens={10:'diez',11:'once',12:'doce',13:'trece',14:'catorce',15:'quince',16:'dieciséis',17:'diecisiete',18:'dieciocho',19:'diecinueve',20:'veinte',
+ 21:'veintiuno',22:'veintidós',23:'veintitrés',24:'veinticuatro',25:'veinticinco',26:'veintiséis',27:'veintisiete',28:'veintiocho',29:'veintinueve'};
+ const tens={30:'treinta',40:'cuarenta',50:'cincuenta',60:'sesenta',70:'setenta',80:'ochenta',90:'noventa'};
+ const hundreds={100:'cien',200:'doscientos',300:'trescientos',400:'cuatrocientos',500:'quinientos',600:'seiscientos',700:'setecientos',800:'ochocientos',900:'novecientos'};
+ if(n<=9)return units[n]; if(n<=29)return teens[n];
+ if(n<100){let t=Math.floor(n/10)*10,r=n%10; return tens[t]+(r?' y '+units[r]:'');}
+ if(n===1000)return 'mil'; if(n===100)return 'cien';
+ if(n<200)return 'ciento '+numberToSpanish(n-100);
+ let h=Math.floor(n/100)*100,r=n%100; return hundreds[h]+(r?' '+numberToSpanish(r):'');
+}
+function normalize(s){return s.toLowerCase().trim().replace(/[áà]/g,'a').replace(/[éè]/g,'e').replace(/[íì]/g,'i').replace(/[óò]/g,'o').replace(/[úùü]/g,'u').replace(/\s+/g,' ');}
+function setNumberMode(m){
+ numberMode=m;
+ document.getElementById('tabListen').classList.toggle('active',m==='listen');
+ document.getElementById('tabWrite').classList.toggle('active',m==='write');
+ document.getElementById('listenBlock').style.display=m==='listen'?'block':'none';
+ document.getElementById('writeBlock').style.display=m==='write'?'block':'none';
+ newNumber();
+}
+function newNumber(){
+ currentNumber=Math.floor(Math.random()*1001);
+ document.getElementById('shownNumber').textContent=currentNumber;
+ document.getElementById('numberAnswer').value='';
+ document.getElementById('numFeedback').textContent='';
+ setTimeout(()=>document.getElementById('numberAnswer').focus(),50);
+}
+function speakCurrentNumber(useRadio=false){
+ speak(numberToSpanish(currentNumber),{statusId:'ttsStatus',radio:useRadio});
+}
+function checkNumber(){
+ const a=document.getElementById('numberAnswer').value;
+ let ok=false;
+ if(numberMode==='listen') ok=String(parseInt(a,10))===String(currentNumber) && a.trim()!=='';
+ else ok=normalize(a)===normalize(numberToSpanish(currentNumber));
+ const f=document.getElementById('numFeedback');
+ if(ok){correct++;f.className='feedback ok';f.textContent='✓ Richtig – '+numberToSpanish(currentNumber);}
+ else{wrong++;f.className='feedback bad';f.textContent='✕ Nicht ganz. Richtige Antwort: '+(numberMode==='listen'?currentNumber:numberToSpanish(currentNumber));}
+ updateStats();
+}
+function revealNumber(){
+ const f=document.getElementById('numFeedback');f.className='feedback';f.textContent='Lösung: '+currentNumber+' — '+numberToSpanish(currentNumber);
+}
+function updateStats(){
+ document.getElementById('correctStat').textContent=correct;document.getElementById('wrongStat').textContent=wrong;
+ let total=correct+wrong;document.getElementById('rateStat').textContent=total?Math.round(correct/total*100)+'%':'–';
+}
+function playInterview(){speak(interviewQuestions[interviewIndex]);document.getElementById('transcript').textContent=interviewQuestions[interviewIndex]}
+function toggleTranscript(){const x=document.getElementById('transcript');x.textContent=interviewQuestions[interviewIndex];x.style.display=x.style.display==='none'?'block':'none'}
+function nextInterview(){interviewIndex=(interviewIndex+1)%interviewQuestions.length;document.getElementById('transcript').style.display='none';playInterview()}
+if('speechSynthesis' in window){ window.speechSynthesis.onvoiceschanged=loadVoices; loadVoices(); }
+</script>
+</body>
+</html>
